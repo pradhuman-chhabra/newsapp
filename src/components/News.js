@@ -4,7 +4,7 @@ import Newsitem from './Newsitem'
 export class News extends Component {
 
 // I made an array of the various news articles-
-Articles=[
+articles=[
   {
       "source": {
           "id": "news24",
@@ -69,6 +69,7 @@ Articles=[
     this.state = {
       articles: this.articles,
       loading: false
+      // i want to iterate the articles inside the state and that's what we are doing in the video number 26
   }
   }
 
@@ -78,18 +79,19 @@ Articles=[
       {/* classname = container likhte hi margin aa jayega
       aur my-3 likhte hi y mein 3 ka margin aa jayega */}
         <h1>News Monkey-Top headlines</h1>
-        <div className="row">
         {/* type in div.row and get this <div className="row"></div> */}
-        <div class="col-6 col-md-4">
-          <Newsitem title="my title" description="my description" imageUrl="https://cdn.24.co.za/files/Cms/General/d/3838/3ac30fc31c02461eadc9e667009a5ca8.jpg" newsUrl="To Do"/>
-        {/* you know what time is this?--passing prop time */}
+        <div className="row">
+        {/* {this.state.articles}--these are all my articles */}
+        {/* map is a higher order array method and we'll give it an arrow function*/}
+        {/* whenever we use .map o iterate elements we need a key  to do so */}
+        {this.state.articles.map((element)=>{
+          return <div class="col-6 col-md-4" key={element.url}>
+            {/* we placed the key in the return statement actually intentionally it should be in the return statement */}
+                  <Newsitem title={element.title.slice(0,45)} description={element.description.slice(0,88)} imageUrl={element.urlToImage} newsUrl={element.url}/>
+                  {/* you know what time is this?--passing prop time */}
+                  {/* {element.description.slice(0,88)} this will limit the number of charachters in the description to 88 */}
         </div>
-        <div class="col-6 col-md-4">
-          <Newsitem title="my title" description="my description"/>
-        </div>
-        <div class="col-6 col-md-4">
-          <Newsitem title="my title" description="my description"/>
-        </div>
+        })}
         </div>
       </div>
     )

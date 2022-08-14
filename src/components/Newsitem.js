@@ -16,9 +16,11 @@ export class Newsitem extends Component {
           <img src={imageUrl} className="card-img-top" alt="..."/>
           {/* i pasted this link from the sampleOutput.json file and in future we'll be passing this link as a prop called imageUrl*/}
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
-            <p className="card-text">{description}</p>
-            <a href="/newsdetail/" className="btn btn-sm btn-primary">Read More</a>
+            <h5 className="card-title">{title}...</h5>
+            <p className="card-text">{description}...</p>{/* we put these ... as we limited the number of charachters in the descriptiona and the title */}
+            <a href={newsUrl} target="_blank" className="btn btn-sm btn-primary">Read More</a>
+            {/* newsUrl is a javascript variable */}
+            {/* here target="_blank" this will open the article in the new tab */}
             {/* btn-sm is a class which makes the button small */}
           </div>
         </div>
